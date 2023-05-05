@@ -3,14 +3,14 @@ import { sortAllFilmsByFavorite } from './sort.js'
 
 // listType - ALL_FILMS | FAVORITE_FILMS
 export const renderFilmsList = (list, listType) => {
-  const body = document.getElementsByTagName('body')
-  const oldContainer = document.getElementsByClassName('film-cards-container')
-  oldContainer[0].remove()
+  const body = document.querySelector('body')
+  const oldContainer = document.querySelector('.film-cards-container')
+  oldContainer.remove()
   
   const container = document.createElement('div')
   container.className = 'film-cards-container'
 
-  body[0].appendChild(container)
+  body.appendChild(container)
 
   const newList = sortAllFilmsByFavorite(list)
   newList.forEach((el) => {
@@ -27,13 +27,13 @@ export const renderFilmsList = (list, listType) => {
     `
     )
 
-    const likeBtn = document.getElementById(`like_${el.id}`)
+    const likeBtn = document.querySelector(`#like_${el.id}`)
 
     likeBtn.addEventListener('click', (e) =>
       handleLikeBtn(e, listType, container)
     )
 
-    const clickableTitle = document.getElementById(`clickableTitle_${el.id}`)
+    const clickableTitle = document.querySelector(`#clickableTitle_${el.id}`)
     clickableTitle.addEventListener('click', () => {
       renderModal(el, listType, container)
     })
@@ -41,7 +41,7 @@ export const renderFilmsList = (list, listType) => {
 }
 
 export const renderModal = (film, listType, container) => {
-  const body = document.getElementsByTagName('body')
+  const body = document.querySelector('body')
   body[0].insertAdjacentHTML(
     'beforeend',
     `
@@ -60,7 +60,7 @@ export const renderModal = (film, listType, container) => {
   </div>
   `
   )
-  const likeBtn = document.getElementById(`modal_like_${film.id}`)
+  const likeBtn = document.querySelector(`#modal_like_${film.id}`)
   likeBtn.addEventListener('click', (e) =>
     handleLikeBtn(e, listType, container)
   )

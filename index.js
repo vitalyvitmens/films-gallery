@@ -9,7 +9,7 @@ if (!fromStorage(ALL_FILMS)) {
 }
 
 const allFilms = fromStorage(ALL_FILMS)
-// const favoriteFilms = fromStorage(FAVORITE_FILMS)
+const favoriteFilms = fromStorage(FAVORITE_FILMS)
 
 const favoriteBtn = document.querySelector('.films-favorite-btn')
 favoriteBtn.addEventListener('click', handleFavoriteListBtn)
